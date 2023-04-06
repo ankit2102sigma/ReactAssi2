@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "name": "HP Laptop 15s-fq2717TU",
+    "description": "12th Generation Intel® Core™ i5 processor",
+    "image": "images/81Sq4eJPsKL._SL1500_.jpg",
+    "price":4555
+  },
+  {
+    "id": 2,
+    "name": "HP Elitebook x360 1030 G3 Laptop",
+    "description": "11th Generation Intel® Core™ i3 processor",
+    "image": "images/galaxybook.jpg",
+    "price": 50000
+  },
+  {
+    "id": 3,
+    "name": "Dell Inspiron 7420",
+    "description": "Core i7 8th Gen/ 8GB/256 SSD/Windows 10",
+    "image": "images/dellinspiration.jpg",
+    "price": 80000
+  },
+  {
+    "id": 4,
+    "name": "HP Laptop 15s-fq2717TU",
+    "description": "11th Generation Intel® Core™ i3 processor",
+    "image": "images/81Sq4eJPsKL._SL1500_.jpg",
+    "price":4555
+  },
+  {
+    "id": 5,
+    "name": "HP Laptop 15s-fq2717TU",
+    "description": "12th Generation Intel® Core™ i5 processor",
+    "image": "images/81Sq4eJPsKL._SL1500_.jpg",
+    "price":4555
+  },
+  {
+    "id": 6,
+    "name": "HP Elitebook x360 1030 G3 Laptop",
+    "description": "11th Generation Intel® Core™ i3 processor",
+    "image": "images/galaxybook.jpg",
+    "price": 50000
+  },
+  {
+    "id": 7,
+    "name": "Dell Inspiron 7420",
+    "description": "Core i7 8th Gen/ 8GB/256 SSD/Windows 10",
+    "image": "images/dellinspiration.jpg",
+    "price": 80000
+  },
+  {
+    "id": 8,
+    "name": "HP Laptop 15s-fq2717TU",
+    "description": "11th Generation Intel® Core™ i3 processor",
+    "image": "images/81Sq4eJPsKL._SL1500_.jpg",
+    "price":4555
+  }
+]
