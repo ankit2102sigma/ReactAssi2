@@ -6,6 +6,7 @@ import Product from "./pages/Product";
 import Checkout from "./pages/Checkout";
 import Aboutus from "./pages/Aboutus";
 import Contactus from "./pages/Contactus";
+import Payment from "./pages/Payment";
 import Cart from "./pages/Cart";
 import NoPage from "./pages/NoPage";
 
@@ -22,6 +23,7 @@ export default function App() {
                     <Route path="Checkout" element={<Checkout />} />
                     <Route path="Aboutus" element={<Aboutus />} />
                     <Route path="Contactus" element={<Contactus />} />
+                    <Route path="Payment" element={<Payment />} />
                     <Route path="*" element={<NoPage />} />
                 </Route>
             </Routes>

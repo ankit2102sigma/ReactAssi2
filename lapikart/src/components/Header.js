@@ -1,17 +1,37 @@
-import React from 'react';
-import "./Header.css";
+import React from "react";
+import { Carousel } from 'react-bootstrap';
+import './Header.css'
+
 
 function Header() {
     return (
-        <div className="section">
-            <div className="section1">
-                <div className="img-slider">
-                    <img src="images/ales-nesetril-Im7lZjxeLhg-unsplash.jpg" alt="img" className="img" />
-                    <p>Buy Your Dream Laptop</p>
-                </div>
-            </div>
-        </div>
-           );
+        <Carousel>
+            <Carousel.Item className="height-img">
+                <img
+                    className="d-block w-100"
+                    src="/images/76.jpeg"
+                    alt="First slide"
+                />
+
+            </Carousel.Item>
+            <Carousel.Item>
+                <img
+                    className="d-block w-100"
+                    src="/images/12.webp"
+                    alt="Second slide"
+                />
+
+            </Carousel.Item>
+            <Carousel.Item>
+                <img
+                    className="d-block w-100"
+                    src="/images/67.webp"
+                    alt="Third slide"
+                />
+
+            </Carousel.Item>
+        </Carousel>
+    );
 }
 
 export default Header;

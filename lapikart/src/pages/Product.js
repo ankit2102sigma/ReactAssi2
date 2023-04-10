@@ -5,7 +5,6 @@ function Product() {
     const [cartItems, setCartItems] = useState([]);
 
     useEffect(() => {
-        // Load cart items from local storage
         const savedCartItems = JSON.parse(localStorage.getItem("cartItems") || "[]");
         setCartItems(savedCartItems);
 
@@ -16,23 +15,27 @@ function Product() {
     }, []);
 
     const handleAddToCart = (product) => {
-        // Check if the product is already in the cart
         const existingItem = cartItems.find((item) => item.id === product.id);
 
         if (existingItem) {
-            // Increment the quantity if the product is already in the cart
             const updatedCartItems = cartItems.map((item) =>
                 item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
             );
+            const shouldAdde = window.confirm("Are you sure you want to add this item to your cart?");
+            if (shouldAdde) {
             setCartItems(updatedCartItems);
+                }
         } else {
-            // Add the product to the cart with a quantity of 1
-            const newCartItem = { id: product.id, name: product.name, price: product.price, quantity: 1 };
-            setCartItems([...cartItems, newCartItem]);
+            const shouldAdd = window.confirm("Are you sure you want to add this item to your cart?");
+            if (shouldAdd) {
+                const newCartItem = { id: product.id, name: product.name, price: product.price, quantity: 1 };
+                setCartItems([...cartItems, newCartItem]);
+                // window.alert("Product added successfully!");
+            }
         }
     };
 
-    // Save cart items to local storage whenever the cart items state changes
+
     useEffect(() => {
         localStorage.setItem("cartItems", JSON.stringify(cartItems));
     }, [cartItems]);
@@ -50,16 +53,16 @@ function Product() {
                 </div>
             ))}
 
-            <div className="cart">
-                <h2>Cart</h2>
-                <ul>
-                    {cartItems.map((item) => (
-                        <li key={item.id}>
-                            {item.name} x {item.quantity} - ${item.price * item.quantity}
-                        </li>
-                    ))}
-                </ul>
-            </div>
+            {/*<div className="cart">*/}
+            {/*    <h2>Cart</h2>*/}
+            {/*    <ul>*/}
+            {/*        {cartItems.map((item) => (*/}
+            {/*            <li key={item.id}>*/}
+            {/*                {item.name} x {item.quantity} - ${item.price * item.quantity}*/}
+            {/*            </li>*/}
+            {/*        ))}*/}
+            {/*    </ul>*/}
+            {/*</div>*/}
         </div>
     );
 }

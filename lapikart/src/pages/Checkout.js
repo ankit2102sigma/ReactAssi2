@@ -1,7 +1,15 @@
 import React from 'react';
+// import PaymentForm from '../components/PaymentForm';
+import BillingForm from '../components/BillingForm';
 
 const Checkout = () => {
-    return <h1>Checkout</h1>;
+    return (
+        <div>
+            <h1>Checkout</h1>
+            <BillingForm />
+
+        </div>
+    );
 };
 
 export default Checkout;
