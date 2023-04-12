@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './BillingForm.css';
+import './Style/BillingForm.css';
 
 
 const BillingForm = () => {
@@ -54,7 +54,7 @@ const BillingForm = () => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <h2>Billing Address</h2>
+            <h2 className=" mx-3">Billing Address</h2>
             <label>
                 Name:
                 <input type="text" name="name" value={name} onChange={handleInputChange} required />

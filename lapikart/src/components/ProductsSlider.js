@@ -1,79 +1,64 @@
-import React, { useState, useEffect } from "react";
-import "./ProductsSlider.css";
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
+import { useState, useEffect } from "react";
+import './Style/ProductSlider.css';
 
-const ProductsSlider = () => {
+const ProductSlider = () => {
     const [products, setProducts] = useState([]);
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const slidesPerPage = 4;
+    const responsive = {
+        superLargeDesktop: {
+            // the naming can be any, depends on you.
+            breakpoint: { max: 4000, min: 1024 },
+            items: 5,
+            slidesToSlide: 2,
+        },
+        desktop: {
+            breakpoint: { max: 1024, min: 800 },
+            items: 4,
+        },
+        tablet: {
+            breakpoint: { max: 800, min: 464 },
+            items: 2,
+        },
+        mobile: {
+            breakpoint: { max: 464, min: 0 },
+            items: 1,
+        },
+    }
+
 
     useEffect(() => {
-        fetch("products.json")
+        fetch("/products.json")
             .then((response) => response.json())
-            .then((data) => setProducts(data));
+            .then((data) => setProducts(data))
+            .catch((error) => console.error(error));
     }, []);
 
-    const handleClick = (action) => {
-        const lastIndex = products.length - slidesPerPage;
-        switch (action) {
-            case "prev":
-                setCurrentIndex((prevIndex) =>
-                    prevIndex <= 0 ? lastIndex : prevIndex - slidesPerPage
-                );
-                break;
-            case "next":
-                setCurrentIndex((prevIndex) =>
-                    prevIndex === lastIndex ? 0 : prevIndex + slidesPerPage
-                );
-                break;
-            default:
-                setCurrentIndex(0);
-                break;
-        }
+    const moveToProducts = (productId) => {
+        window.location.href = '/product';
     };
 
     return (
         <div className="slider">
-            <div className="slider-header">
-                <h2>Featured Products</h2>
-                <div className="slider-nav">
-                    <button className="slider-prev" onClick={() => handleClick("prev")}>
-                        <i className="fa fa-angle-left"></i>
-                    </button>
-                    <button className="slider-next" onClick={() => handleClick("next")}>
-                        <i className="fa fa-angle-right"></i>
-                    </button>
-                </div>
+            <div>
+                <h1>Buy Your Dream Laptop</h1>
             </div>
-            <div className="slider-body">
-                <div
-                    className="slider-wrapper"
-                    style={{
-                        transform: `translateX(-${currentIndex * (100 / slidesPerPage)}%)`,
-                    }}
-                >
+            <div className="main">
+                <Carousel responsive={responsive}>
                     {products.map((product) => (
-                        <div key={product.id} className="slider-slide">
-                            <div className="card">
-                                <img
-                                    src={product.image}
-                                    className="card-img-top"
-                                    alt={product.name}
-                                />
-                                <div className="card-body">
-                                    <h5 className="card-title">{product.name}</h5>
-                                    <p className="card-text">{product.description}</p>
-                                    <p className="card-text">${product.price}</p>
-                                    <a href="#" className="btn btn-primary">
-                                        Add to Cart
-                                    </a>
-                                </div>
-                            </div>
+                        <div className="card" key={product.id}>
+                            <img id="image_sldier" src={product.image} alt={product.name}/>
+                            <h2>{product.name}</h2>
+                            <p className="price">Rs {product.price}</p>
+                            <p>
+                                <button onClick={() => moveToProducts()}>VIew More</button>
+                            </p>
                         </div>
                     ))}
-                </div>
+                </Carousel>
             </div>
         </div>
     );
 };
 
-export default ProductsSlider;
+export default ProductSlider;

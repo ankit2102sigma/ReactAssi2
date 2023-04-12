@@ -1,11 +1,11 @@
 import React from 'react';
-import "./Footer.css";
+import "./Style/Footer.css";
 
 function Footer() {
     return (
         <div className="footer">
             <div className="footer_logo">
-                <img src="Images/logo.jpg" alt="Image" />
+                <h1 id="logo-foot">Lapi-KArt</h1>
             </div>
             <div className="about">
                 <h3>ABOUT US</h3>

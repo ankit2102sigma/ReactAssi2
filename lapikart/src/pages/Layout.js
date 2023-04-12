@@ -1,5 +1,5 @@
 import { Outlet, Link } from "react-router-dom";
-import "./layout.css";
+import "./Css/layout.css";
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
 import React from "react";
 import Footer from '../components/Footer'

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import "./Product.css";
+import "./Css/Product.css";
+
 function Product() {
     const [products, setProducts] = useState([]);
     const [cartItems, setCartItems] = useState([]);
@@ -23,8 +24,8 @@ function Product() {
             );
             const shouldAdde = window.confirm("Are you sure you want to add this item to your cart?");
             if (shouldAdde) {
-            setCartItems(updatedCartItems);
-                }
+                setCartItems(updatedCartItems);
+            }
         } else {
             const shouldAdd = window.confirm("Are you sure you want to add this item to your cart?");
             if (shouldAdd) {
@@ -35,34 +36,28 @@ function Product() {
         }
     };
 
-
     useEffect(() => {
         localStorage.setItem("cartItems", JSON.stringify(cartItems));
     }, [cartItems]);
 
     console.log("cartItems", cartItems);
-    return (
-        <div className="product-list">
-            {products.map((product) => (
-                <div className="product" key={product.id}>
-                    <h3>{product.name}</h3>
-                    <img id="img" src={product.image} alt={product.name} />
-                    <p>{product.description}</p>
-                    <p>{product.price} Rs</p>
-                    <button onClick={() => handleAddToCart(product)}>Add to Cart</button>
-                </div>
-            ))}
 
-            {/*<div className="cart">*/}
-            {/*    <h2>Cart</h2>*/}
-            {/*    <ul>*/}
-            {/*        {cartItems.map((item) => (*/}
-            {/*            <li key={item.id}>*/}
-            {/*                {item.name} x {item.quantity} - ${item.price * item.quantity}*/}
-            {/*            </li>*/}
-            {/*        ))}*/}
-            {/*    </ul>*/}
-            {/*</div>*/}
+    return (
+        <div>
+            <div className="title">
+                <h1>Your Perfect Laptop: Discover Our High-Performance Laptops</h1>
+            </div>
+            <div className="product-list">
+                {products.map((product) => (
+                    <div className="product" key={product.id}>
+                        <h3>{product.name}</h3>
+                        <img id="img" src={product.image} alt={product.name} />
+                        <p>{product.description}</p>
+                        <p>{product.price} Rs</p>
+                        <button onClick={() => handleAddToCart(product)}>Add to Cart</button>
+                    </div>
+                ))}
+            </div>
         </div>
     );
 }

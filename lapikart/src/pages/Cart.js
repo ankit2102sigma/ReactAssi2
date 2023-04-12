@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import "./Cart.css";
+import "./Css/Cart.css";
 
 function Cart() {
     const [cartItems, setCartItems] = useState([]);
@@ -22,10 +22,11 @@ function Cart() {
         setCartItems(updatedCartItems);
         localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
     };
-    const BuyProduct = () => {
 
+    const BuyProduct = () => {
         window.location.href = "/Checkout";
     };
+
     const handleDecreaseQuantity = (item) => {
         const updatedCartItems = cartItems
             .map((i) =>
@@ -47,42 +48,55 @@ function Cart() {
                 {cartItems.length > 0 ? (
                     <div className="cart">
                         <h2>Cart</h2>
-                        <ul>
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>Product Name</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+                                <th>Actions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
                             {cartItems.map((item) => (
-                                <li key={item.id}>
-                                    <div className="cart-item-info">
-                                        <span className="cart-item-name">{item.name}</span>
-                                        <span className="cart-item-price">
-                      ${item.price} x {item.quantity} = $
-                                            {item.price * item.quantity}
-                    </span>
-                                    </div>
-                                    <div className="cart-item-actions">
+                                <tr key={item.id}>
+                                    <td>{item.name}</td>
+                                    <td>${item.price}</td>
+                                    <td>
+                                        <div className="quantity">
+                                            <button
+                                                className="quantity-button"
+                                                onClick={() => handleDecreaseQuantity(item)}
+                                            >
+                                                -
+                                            </button>
+                                            <span className="quantity-number">{item.quantity}</span>
+                                            <button
+                                                className="quantity-button"
+                                                onClick={() => handleIncreaseQuantity(item)}
+                                            >
+                                                +
+                                            </button>
+                                        </div>
+                                    </td>
+                                    <td>${item.price * item.quantity}</td>
+                                    <td>
                                         <button
                                             className="remove-button"
                                             onClick={() => handleRemoveFromCart(item)}
                                         >
                                             Remove
                                         </button>
-                                        <button
-                                            className="quantity-button"
-                                            onClick={() => handleIncreaseQuantity(item)}
-                                        >
-                                            +
-                                        </button>
-                                        <button className="quantity-button">{item.quantity}</button>
-                                        <button
-                                            className="quantity-button"
-                                            onClick={() => handleDecreaseQuantity(item)}
-                                        >
-                                            -
-                                        </button>
-                                    </div>
-                                </li>
+                                    </td>
+                                </tr>
                             ))}
-                        </ul>
+                            </tbody>
+                        </table>
                         <p className="total-amount">Total amount: ${totalAmount}</p>
-                        <button className="buy-now-button"  onClick={() => BuyProduct()}>Buy now</button>
+                        <button className="buy-now-button" onClick={() => BuyProduct()}>
+                            Buy now
+                        </button>
                     </div>
                 ) : (
                     <p>No products in cart</p>

@@ -1,6 +1,6 @@
 import React from "react";
 import { Carousel } from 'react-bootstrap';
-import './Header.css'
+import './Style/Header.css'
 
 
 function Header() {
@@ -9,7 +9,7 @@ function Header() {
             <Carousel.Item className="height-img">
                 <img
                     className="d-block w-100"
-                    src="/images/76.jpeg"
+                    src="/images/pexels-cottonbro-studio-4065876.jpg"
                     alt="First slide"
                 />
 
@@ -17,7 +17,7 @@ function Header() {
             <Carousel.Item>
                 <img
                     className="d-block w-100"
-                    src="/images/12.webp"
+                    src="/images/67.webp"
                     alt="Second slide"
                 />
 
@@ -25,7 +25,7 @@ function Header() {
             <Carousel.Item>
                 <img
                     className="d-block w-100"
-                    src="/images/67.webp"
+                    src="/images/12.webp"
                     alt="Third slide"
                 />
 

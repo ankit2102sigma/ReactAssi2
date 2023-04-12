@@ -1,18 +1,47 @@
 import React from 'react'
 import Header from '../components/Header'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './Home.css'
+import './Css/Home.css'
 import ProductsSlider from "../components/ProductsSlider";
 
 const Home = () => {
+    const handleImageClick = () => {
+        window.location.href = '/product';
+    }
+
     return (
         <>
             <Header />
             <div>
-                <img id="img-banner" src="images/lap.jpg"/>
-                <h1 className="text-ali">Laptops That Bring Out the Best In You</h1>
-                <p className="text-ali">In today’s fast-paced world, a laptop is an essential tool for most people. Whether you’re a student, a professional, or someone who just wants to stay connected, a good laptop can make all the difference. But with so many options on the market, it can be hard to know which one to choose . </p>
+                <img
+                    id="img-banner"
+                    src="images/lap.jpg"
+                    alt="Laptop"
+                    onClick={handleImageClick}
+                    className="zoom-image"
+                />
+                <img
+                    id="img-banner"
+                    src="images/15.avif"
+                    alt="15"
+                    onClick={handleImageClick}
+                    className="zoom-image"
+                />
                 <ProductsSlider />
+                <img
+                    id="img-banner"
+                    src="images/deal.jpg"
+                    alt="Deal"
+                    onClick={handleImageClick}
+                    className="zoom-image"
+                />
+                <img
+                    id="img-banner"
+                    src="images/size.webp"
+                    alt="Size"
+                    onClick={handleImageClick}
+                    className="zoom-image"
+                />
             </div>
 
         </>

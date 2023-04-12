@@ -1,0 +1,44 @@
+.slider-aboutus {
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.testimonial {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.testimonial-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.testimonial-name {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.testimonial-text {
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    color: white;
+}
+.header-tesimonials{
+    text-align: center;
+    font-size: 35px;
+}
+.testi-box{
+    background: #052137;
+}
+

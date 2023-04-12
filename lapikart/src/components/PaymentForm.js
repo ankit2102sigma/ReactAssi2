@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import Cards from 'react-credit-cards';
 import 'react-credit-cards/es/styles-compiled.css';
-import './PaymentForm.css';
+import './Style/PaymentForm.css';
 
 const PaymentForm = ({ handleSubmit }) => {
-    const [cvc, setCvc] = useState('');
+    const [cvv, setCvv] = useState('');
     const [expiry, setExpiry] = useState('');
     const [focus, setFocus] = useState('');
     const [name, setName] = useState('');
@@ -24,35 +24,65 @@ const PaymentForm = ({ handleSubmit }) => {
             setName(value);
         } else if (name === 'expiry') {
             setExpiry(value);
-        } else if (name === 'cvc') {
-            setCvc(value);
+        } else if (name === 'cvv') {
+            setCvv(value);
         }
     };
 
     const validateForm = () => {
-        const expiryDateRegex = /^[A-Za-z\s]+$/;
+        const nameRegEx = /^[A-Za-z]{1,15}( [A-Za-z]{1,15})+$/
+        const cvvRegEx = /^\d{3}$/;
+        const numberRegEx = /^\d{16}$/;
+
+
+        console.log("errer", error);
 
         if (!name.trim()) {
             setError('Name is required');
+            alert('Name is required');
+            console.log("test");
             return false;
         }
-        if (!number.trim()) {
+        else if (!number.trim()) {
             setError('Card number is required');
+            alert('Card number is required');
             return false;
         }
-        if (!expiry.trim()) {
+       else if (!expiry.trim()) {
             setError('Expiry date is required');
-            return false;
-        }
-        if (!cvc.trim()) {
-            setError('CVC is required');
-            return false;
-        }
-        if(!(expiryDateRegex.test(name))){
 
-            setError('Enter Valid  Name');
+            alert('Expiry date is required');
             return false;
         }
+        else if (!cvv.trim()) {
+            setError('CVC is required');
+            alert("CVC is required");
+            return false;
+        }
+        else
+         if(!(nameRegEx.test(name))){
+             console.log("calling....");
+            setError('Enter Valid  Name');
+             alert('Enter Valid  Name');
+            console.log("error", error)
+            return false;
+        }
+         else
+         if(!(cvvRegEx.test(cvv))){
+             console.log("calling....");
+             setError('Enter Valid  cvv');
+             alert("Enter Valid  cvv");
+             console.log("error", error)
+             return false;
+         }
+         else
+         if(!(numberRegEx.test(number))){
+             console.log("calling....");
+             setError('Enter Valid  number');
+             alert("Enter Valid  number");
+             console.log("error", error)
+             return false;
+         }
         setError('');
         return true;
     };
@@ -62,7 +92,6 @@ const PaymentForm = ({ handleSubmit }) => {
         if (validateForm()) {
             localStorage.clear();
             alert('Successfully bought product!');
-
                 window.location.href = '/product';
             }
     };
@@ -70,7 +99,7 @@ const PaymentForm = ({ handleSubmit }) => {
     return (
         <div id="PaymentForm">
             <Cards
-                cvc={cvc}
+                cvc={cvv}
                 expiry={expiry}
                 focused={focus}
                 name={name}
@@ -108,16 +137,16 @@ const PaymentForm = ({ handleSubmit }) => {
                 />
                 <input
                     type="tel"
-                    name="cvc"
-                    placeholder="CVC"
-                    value={cvc}
+                    name="cvv"
+                    placeholder="CVV"
+                    value={cvv}
                     onChange={handleInputChange}
                     onFocus={handleInputFocus}
                     maxLength={3}
                     minLength={3}
                     required
                 />
-                {error && <div className="error">{error}</div>}
+
                 <button type="submit">Submit Payment</button>
             </form>
         </div>
