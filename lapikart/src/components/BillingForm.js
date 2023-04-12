@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './Style/BillingForm.css';
-
 
 const BillingForm = () => {
     const [name, setName] = useState('');
@@ -12,49 +12,55 @@ const BillingForm = () => {
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
-        let isValid = true;
+
+        const nameRegex = /^[a-zA-Z\s]{1,15}$/;
+        const addressRegex = /^[a-zA-Z0-9\s,'-]{1,20}$/;
+        const cityRegex = /^[a-zA-Z\s]{1,10}$/;
+        const stateRegex = /^[a-zA-Z\s]{1,10}$/;
 
         if (name === 'name') {
             // validate name input
-            const regex = /^[a-zA-Z\s]*$/;
-            isValid = regex.test(value);
-            setName(value);
+            if (nameRegex.test(value)) {
+                setName(value);
+            } else {
+                setName('');
+            }
         } else if (name === 'email') {
             setEmail(value);
         } else if (name === 'address') {
             // validate address input
-            const regex = /^[a-zA-Z0-9\s,'-]*$/;
-            isValid = regex.test(value);
-            setAddress(value);
+            if (addressRegex.test(value)) {
+                setAddress(value);
+            } else {
+                setAddress('');
+            }
         } else if (name === 'city') {
             // validate city input
-            const regex = /^[a-zA-Z\s]*$/;
-            isValid = regex.test(value);
-            setCity(value);
+            if (cityRegex.test(value)) {
+                setCity(value);
+            } else {
+                setCity('');
+            }
         } else if (name === 'state') {
             // validate state input
-            const regex = /^[a-zA-Z\s]*$/;
-            isValid = regex.test(value);
-            setState(value);
+            if (stateRegex.test(value)) {
+                setState(value);
+            } else {
+                setState('');
+            }
         } else if (name === 'zip') {
             setZip(value);
         }
-
-        if (!isValid) {
-            alert(`Invalid ${name} input`);
-        }
     };
-
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        alert("Address Added Successfully")
-        window.location.href = "/Payment";
+        alert('Address Added Successfully');
     };
 
     return (
         <form onSubmit={handleSubmit}>
-            <h2 className=" mx-3">Billing Address</h2>
+            <h2 className="mx-3">Billing Address</h2>
             <label>
                 Name:
                 <input type="text" name="name" value={name} onChange={handleInputChange} required />
@@ -77,10 +83,12 @@ const BillingForm = () => {
             </label>
             <label>
                 ZIP Code:
-                <input type="number" name="zip" value={zip} onChange={handleInputChange}  maxLength={7}
-                       minLength={5}required />
+                <input type="number" name="zip" value={zip} onChange={handleInputChange} maxLength={7} minLength={5} required />
             </label>
-            <button type="submit">Submit</button>
+            <div className="button-group">
+                <button>
+                <Link to="/payment" className="button primary" onClick={handleSubmit}>Submit</Link></button>
+            </div>
         </form>
     );
 };

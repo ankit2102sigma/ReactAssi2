@@ -44,9 +44,7 @@ function Product() {
 
     return (
         <div>
-            <div className="title">
-                <h1>Your Perfect Laptop: Discover Our High-Performance Laptops</h1>
-            </div>
+
             <div className="product-list">
                 {products.map((product) => (
                     <div className="product" key={product.id}>
