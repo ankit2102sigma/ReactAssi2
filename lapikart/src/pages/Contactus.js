@@ -45,7 +45,7 @@ const ContactForm = () => {
 
         if (valid) {
             setFormStatus('Submitting...');
-            axios.post('http://localhost/ReactAssi2/Php/saveForm.php', formData)
+            axios.post('http://localhost/ReactAssi2-main/Php/saveForm.php', formData)
                 .then((response) => {
                     if (response.status === 200) {
                         setFormStatus('Submitted');
@@ -59,7 +59,7 @@ const ContactForm = () => {
                 });
 
 
-            axios.post('http://localhost/ReactAssi2/Php/sendEmail.php', formData)
+            axios.post('http://localhost/ReactAssi2-main/Php/sendEmail.php', formData)
                 .then((response) => {
                     console.log(response);
                 })

@@ -6,7 +6,7 @@ header("Access-Control-Allow-Headers: Content-Type");
 $servername = "localhost";
 $username = "admin";
 $password = "admin";
-$dbname = "conatctUS";
+$dbname = "customer-query";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password);

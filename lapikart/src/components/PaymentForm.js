@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import Cards from 'react-credit-cards';
 import 'react-credit-cards/es/styles-compiled.css';
+import { useNavigate } from 'react-router-dom';
 import './Style/PaymentForm.css';
 
 const PaymentForm = ({ handleSubmit }) => {
+    const navigate = useNavigate();
+
     const [cvv, setCvv] = useState('');
     const [expiry, setExpiry] = useState('');
     const [focus, setFocus] = useState('');
@@ -92,7 +95,7 @@ const PaymentForm = ({ handleSubmit }) => {
         if (validateForm()) {
             localStorage.clear();
             alert('Successfully bought product!');
-                window.location.href = '/product';
+            navigate('/product');
             }
     };
 

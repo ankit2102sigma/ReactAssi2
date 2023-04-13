@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Style/BillingForm.css';
+import { useNavigate } from 'react-router-dom';
 
 
 const BillingForm = () => {
@@ -9,6 +10,8 @@ const BillingForm = () => {
     const [city, setCity] = useState('');
     const [state, setState] = useState('');
     const [zip, setZip] = useState('');
+
+    const navigate = useNavigate();
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -53,7 +56,7 @@ const BillingForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         alert("Address Added Successfully")
-        window.location.href = "/Payment";
+        navigate('/Payment');
     };
 
     return (
